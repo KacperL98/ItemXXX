@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/drawable/gradient_background.xml" value="0.303" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/activity_change_password.xml" value="0.2536231884057971" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/activity_login.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/activity_panel.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/activity_reset_password.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/custom_toolbar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/fragment_first.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/fragment_second.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/fragment_splash.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/fragment_third.xml" value="0.264" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/fragment_view_pager.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/layout_appbar.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/layout/layout_banner.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/menu/menu_back_item.xml" value="0.18854166666666666" />
+        <entry key="..\:/Users/kacpe/OneDrive/Pulpit/company/ToolRental-master/app/src/main/res/menu/menu_bottom_navigation.xml" value="0.18854166666666666" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mainPanel.PanelActivity">
+    tools:context=".mainPanel.PanelActivity"
+    android:background="@drawable/gradient_background">
 
     <Button
         android:id="@+id/btn_logout"
@@ -12,8 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button_shape_2"
-        android:foreground="?attr/selectableItemBackground"
+        android:layout_margin="12dp"
+        android:background="@drawable/radius_btn"
         android:gravity="center"
         android:text="Logout"
         android:textColor="@color/colorWhite"
@@ -32,8 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button_shape_2"
-        android:foreground="?attr/selectableItemBackground"
+        android:layout_margin="12dp"
+        android:background="@drawable/radius_btn"
         android:gravity="center"
         android:text="Scanner"
         android:textColor="@color/colorWhite"
@@ -52,8 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button_shape_2"
-        android:foreground="?attr/selectableItemBackground"
+        android:layout_margin="12dp"
+        android:background="@drawable/radius_btn"
         android:gravity="center"
         android:text="Change password"
         android:textColor="@color/colorWhite"
@@ -72,8 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button_shape_2"
-        android:foreground="?attr/selectableItemBackground"
+        android:layout_margin="12dp"
+        android:background="@drawable/radius_btn"
         android:gravity="center"
         android:text="Chat"
         android:textColor="@color/colorWhite"
@@ -85,4 +86,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.055" />
+
+    <Button
+        android:id="@+id/btn_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:background="@drawable/radius_btn"
+        android:gravity="center"
+        android:text="Send email"
+        android:textColor="@color/colorWhite"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/btn_change" />
 </androidx.constraintlayout.widget.ConstraintLayout>

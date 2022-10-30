@@ -27,5 +27,7 @@
     <color name="dark_gradient">#0A12AA</color>
     <color name="light_gradient">#656897</color>
     <color name="toolbar">#3D45BF</color>
+    <color name="background_left">#989898</color>
+
 
 </resources>

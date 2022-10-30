@@ -5,31 +5,28 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.kacper.itemxxx.R
 import com.kacper.itemxxx.chat.model.Users
-import com.kacper.itemxxx.databinding.FragmentSearchBinding
 import com.kacper.itemxxx.databinding.FragmentSettingsBinding
 import com.kacper.itemxxx.helpers.AuthenticationHelper.firebaseUser
 import com.kacper.itemxxx.helpers.AuthenticationHelper.refUsers
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_message_chat.*
-import kotlinx.android.synthetic.main.fragment_settings.*
-import kotlinx.android.synthetic.main.fragment_settings.view.*
-import kotlinx.android.synthetic.main.user_search_item_layout.view.*
 
 
 class SettingsFragment : Fragment() {
@@ -37,21 +34,20 @@ class SettingsFragment : Fragment() {
     private var storageRef: StorageReference? = null
     private var coverChecker: String? = ""
     private var _binding: FragmentSettingsBinding? = null
-    private val binding
-        get() = _binding!!
-
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentSettingsBinding.inflate(layoutInflater, container, false)
+    ): View {
+        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         firebaseUser = FirebaseAuth.getInstance().currentUser
         refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUser!!.uid)
         storageRef = FirebaseStorage.getInstance().reference.child("User Images")
-
-
 
         refUsers!!.addValueEventListener(object : ValueEventListener {
             override fun onCancelled(pO: DatabaseError) {
@@ -64,23 +60,29 @@ class SettingsFragment : Fragment() {
                     if (context != null) {
                         binding.usernameSettings.text = user!!.username
                         Picasso.get().load(user.profile).placeholder(R.drawable.profile)
-                            .into(profile_image_settings1)
+                            .into(binding.profileImageSettings1)
                         Picasso.get().load(user.cover).placeholder(R.drawable.cover)
-                            .into(cover_image_settings1)
+                            .into(binding.coverImageSettings1)
                     }
                 }
             }
         })
+
+        setProfileImage()
+        setCoverImage()
+    }
+
+    private fun setProfileImage() {
         binding.profileImageSettings1.setOnClickListener {
             pickImage()
         }
+    }
 
+    private fun setCoverImage() {
         binding.coverImageSettings1.setOnClickListener {
             coverChecker = "cover"
             pickImage()
         }
-
-        return binding.root
     }
 
     private fun pickImage() {

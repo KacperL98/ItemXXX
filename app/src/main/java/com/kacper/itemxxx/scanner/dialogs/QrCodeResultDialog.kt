@@ -60,14 +60,14 @@ class QrCodeResultDialog(var context: Context) {
             onDismissListener?.onDismiss()
         }
 
-        dialog.button2.setOnClickListener {
+        dialog.send_message_to_firebase.setOnClickListener {
             val reference = FirebaseDatabase.getInstance().getReference("Data")
             val hashMap = HashMap<String, String>()
             hashMap["scannedText"] = dialog.scannedText.text.toString()
             hashMap["ID_User"] = dialog.identificationUser.text.toString()
             hashMap["Order_Number"] = dialog.numberUsers.text.toString()
             hashMap["Number"] = dialog.numberIte2.text.toString()
-
+            Toast.makeText(context, "Sent message", Toast.LENGTH_LONG).show()
             reference.push().setValue(hashMap)
         }
     }
@@ -109,6 +109,7 @@ class QrCodeResultDialog(var context: Context) {
             dialog.scannedText.text.toString()
         )
         context.startActivity(Intent.createChooser(txtIntent, "Share QR Result"))
+        Toast.makeText(context, "Sent message ...", Toast.LENGTH_LONG).show()
     }
 
     interface OnDismissListener {

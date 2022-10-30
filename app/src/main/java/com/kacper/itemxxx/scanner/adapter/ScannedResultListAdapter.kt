@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.kacper.itemxxx.R
+import com.kacper.itemxxx.databinding.LayoutSingleItemQrResultBinding
 import com.kacper.itemxxx.db.entities.DatabaseDao
 import com.kacper.itemxxx.db.entities.QrResult
 import com.kacper.itemxxx.scanner.dialogs.QrCodeResultDialog
@@ -23,13 +24,8 @@ class ScannedResultListAdapter(
         QrCodeResultDialog(context)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScannedResultListViewHolder {
-        return ScannedResultListViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.layout_single_item_qr_result,
-                parent,
-                false
-            )
-        )
+        val binding = LayoutSingleItemQrResultBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ScannedResultListViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
@@ -40,30 +36,27 @@ class ScannedResultListAdapter(
         holder.bind(listOfScannedResult[position], position)
     }
 
-    inner class ScannedResultListViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+    inner class ScannedResultListViewHolder(val binding: LayoutSingleItemQrResultBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(qrResult: QrResult, position: Int) {
-            view.result.text = qrResult.result!!
-            view.tvTime.text = qrResult.calendar.toFormattedDisplay()
-            setResultTypeIcon(qrResult.resultType)
+            binding.result.text = qrResult.result!!
+            binding.tvTime.text = qrResult.calendar.toFormattedDisplay()
             setFavourite(qrResult.favourite)
             onClicks(qrResult, position)
-        }
-        private fun setResultTypeIcon(resultType: String?) {
         }
 
         private fun setFavourite(isFavourite: Boolean) {
             if (isFavourite)
-                view.favouriteIcon.visibility = View.VISIBLE
+                binding.favouriteIcon.visibility = View.VISIBLE
             else
-                view.favouriteIcon.visibility = View.GONE
+                binding.favouriteIcon.visibility = View.GONE
         }
         private fun onClicks(qrResult: QrResult, position: Int) {
-            view.setOnClickListener {
+            binding.root.setOnClickListener {
                 resultDialog.show(qrResult)
             }
 
-            view.setOnLongClickListener {
+            binding.root.setOnLongClickListener {
                 showDeleteDialog(qrResult, position)
                 return@setOnLongClickListener true
             }

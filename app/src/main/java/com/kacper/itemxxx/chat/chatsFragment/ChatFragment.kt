@@ -1,12 +1,11 @@
 package com.kacper.itemxxx.chat.chatsFragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
@@ -14,7 +13,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.iid.FirebaseInstanceId
-import com.kacper.itemxxx.R
 import com.kacper.itemxxx.chat.adapters.UserAdapter
 import com.kacper.itemxxx.chat.model.ChatList
 import com.kacper.itemxxx.chat.model.Users
@@ -27,15 +25,18 @@ class ChatFragment : Fragment() {
     private var usersChatList: List<ChatList>? = null
     private var firebaseUser: FirebaseUser? = null
     private var _binding: FragmentChatBinding? = null
-    private val binding
-        get() = _binding!!
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentChatBinding.inflate(layoutInflater, container, false)
+    ): View {
+        _binding = FragmentChatBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.recyclerViewChatList.setHasFixedSize(true)
         binding.recyclerViewChatList.layoutManager = LinearLayoutManager(context)
 
@@ -59,7 +60,6 @@ class ChatFragment : Fragment() {
             }
         })
         updateToken(FirebaseInstanceId.getInstance().token)
-        return binding.root
     }
 
     private fun updateToken(token: String?) {
@@ -84,7 +84,7 @@ class ChatFragment : Fragment() {
                         }
                     }
                 }
-                userAdapter = UserAdapter(context!!, (users as ArrayList<Users>), true)
+                userAdapter = UserAdapter(context, (users as ArrayList<Users>), true)
                 binding.recyclerViewChatList.adapter = userAdapter
             }
 
@@ -92,5 +92,4 @@ class ChatFragment : Fragment() {
             }
         })
     }
-
 }

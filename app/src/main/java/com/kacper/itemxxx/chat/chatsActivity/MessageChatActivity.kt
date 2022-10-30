@@ -22,6 +22,8 @@ import com.kacper.itemxxx.chat.model.Chat
 import com.kacper.itemxxx.chat.model.Data
 import com.kacper.itemxxx.chat.model.Users
 import com.kacper.itemxxx.chat.notifications.*
+import com.kacper.itemxxx.databinding.ActivityChatBinding
+import com.kacper.itemxxx.databinding.ActivityLoginBinding
 import com.kacper.itemxxx.databinding.ActivityMessageChatBinding
 import com.kacper.itemxxx.helpers.AuthenticationHelper.firebaseUser
 import com.kacper.itemxxx.helpers.AuthenticationHelper.refUsers
@@ -38,11 +40,12 @@ class MessageChatActivity : AppCompatActivity() {
     var chatList: List<Chat>? = null
     var notify = false
     var apiService: APIService? = null
-    private lateinit var binding: ActivityMessageChatBinding
+    private var _binding: ActivityMessageChatBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMessageChatBinding.inflate(layoutInflater)
+        _binding = ActivityMessageChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbarMessageChat)
@@ -72,14 +75,14 @@ class MessageChatActivity : AppCompatActivity() {
 
             override fun onDataChange(pO: DataSnapshot) {
                 val user: Users? = pO.getValue(Users::class.java)
-                username_mchat.text = user!!.username
-                Picasso.get().load(user.profile).into(profile_image_mchat)
+                binding.usernameMchat.text = user!!.username
+                Picasso.get().load(user.profile).into(binding.profileImageMchat)
                 retrieveMessages(firebaseUser!!.uid, userIdVisit, user.profile)
             }
         })
         send_message_btn.setOnClickListener {
             notify = true
-            val message = text_message.text.toString()
+            val message = binding.textMessage.text.toString()
             if (message == "") {
                 Toast.makeText(
                     this@MessageChatActivity,

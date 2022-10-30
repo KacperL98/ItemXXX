@@ -13,6 +13,7 @@ import com.kacper.itemxxx.chat.chatsFragment.SettingsFragment
 import com.kacper.itemxxx.chat.model.Chat
 import com.kacper.itemxxx.chat.model.Users
 import com.kacper.itemxxx.databinding.ActivityChatBinding
+import com.kacper.itemxxx.databinding.ActivityLoginBinding
 import com.kacper.itemxxx.helpers.AuthenticationHelper.firebaseUser
 import com.kacper.itemxxx.helpers.AuthenticationHelper.refUsers
 import com.kacper.itemxxx.mainPanel.PanelActivity
@@ -23,10 +24,11 @@ import kotlinx.android.synthetic.main.activity_visit_user_profile.*
 import kotlinx.android.synthetic.main.user_search_item_layout.view.*
 
 class ChatActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityChatBinding
+    private var _binding: ActivityChatBinding? = null
+    private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityChatBinding.inflate(layoutInflater)
+        _binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         back_btn_panelActivity.setOnClickListener {
@@ -68,7 +70,7 @@ class ChatActivity : AppCompatActivity() {
             override fun onDataChange(pO: DataSnapshot) {
                 if (pO.exists()) {
                     val user: Users? = pO.getValue(Users::class.java)
-                    user_name.text = user!!.username
+                    binding.userName.text = user!!.username
                     Picasso.get().load(user.profile).placeholder(R.drawable.profile)
                         .into(binding.profileImage)
                 }

@@ -7,37 +7,35 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.kacper.itemxxx.R
 import com.kacper.itemxxx.chat.adapters.UserAdapter
 import com.kacper.itemxxx.chat.model.Users
-import com.kacper.itemxxx.databinding.FragmentChatBinding
 import com.kacper.itemxxx.databinding.FragmentSearchBinding
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_message_chat.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 class SearchFragment : Fragment() {
 
     private var userAdapter: UserAdapter? = null
      lateinit var users: List<Users>
-    private var _binding: FragmentSearchBinding? = null
-    private val binding
-        get() = _binding!!
 
+    private var _binding: FragmentSearchBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        _binding = FragmentSearchBinding.inflate(layoutInflater, container, false)
+    ): View {
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.recyclerSearchList.setHasFixedSize(true)
         binding.recyclerSearchList.layoutManager = LinearLayoutManager(context)
 
@@ -48,14 +46,12 @@ class SearchFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(cs: CharSequence?, start: Int, before: Int, count: Int) {
-                searchForUsers(cs.toString().toLowerCase())
+                searchForUsers(cs.toString().toLowerCase(Locale.ROOT))
 
             }
             override fun afterTextChanged(s: Editable?) {
             }
-        })
-        return binding.root
-    }
+        }) }
     private fun retrieveAllUsers() {
         val firebaseUserID = FirebaseAuth.getInstance().currentUser!!.uid
 
@@ -73,7 +69,7 @@ class SearchFragment : Fragment() {
 
                         }
                     }
-                    userAdapter = UserAdapter(context!!, users as ArrayList<Users>, false)
+                    userAdapter = UserAdapter(context, users as ArrayList<Users>, false)
                     binding.recyclerSearchList.adapter = userAdapter
                 }
             }
@@ -97,7 +93,7 @@ class SearchFragment : Fragment() {
                         (users as ArrayList<Users>).add(user)
                     }
                 }
-                userAdapter = UserAdapter(context!!, users as ArrayList<Users>, false)
+                userAdapter = UserAdapter(context, users as ArrayList<Users>, false)
                 binding.recyclerSearchList.adapter = userAdapter
             }
             override fun onCancelled(pO: DatabaseError) {

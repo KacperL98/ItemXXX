@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="700dp"
-        android:background="@color/scanColor">
+        android:background="@drawable/gradient_background">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/cancelDialog"
@@ -32,7 +32,7 @@
             android:layout_marginEnd="32dp"
             android:gravity="center"
             android:padding="10dp"
-            android:textColor="@color/colorText"
+            android:textColor="@color/white"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -40,13 +40,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.062"
-            tools:text="TextView" />
+            tools:text="Scanned text" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/scannedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
+            android:textColor="@color/white"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -96,17 +96,17 @@
             app:layout_constraintTop_toBottomOf="@+id/scannedDate" />
 
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/numberIte2"
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="@drawable/button_shape_2"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radius_btn"
             android:ems="10"
             android:gravity="center"
             android:inputType="textPersonName"
-            android:hint="Number Items"
+            android:hint="Short description"
             android:textColorHint="@color/white"
-            android:textColor="@color/lightGray"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.474"
@@ -114,35 +114,34 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.403" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/identificationUser"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="@drawable/button_shape_2"
+            android:background="@drawable/radius_btn"
             android:ems="10"
             android:gravity="center"
-            android:hint="User identifier"
+            android:hint="User ID"
             android:inputType="textPersonName"
-            android:textColor="@color/lightGray"
+            android:textColor="@color/white"
             android:textColorHint="@color/colorWhite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.474"
+            app:layout_constraintHorizontal_bias="0.477"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.221" />
+            app:layout_constraintVertical_bias="0.22" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/numberUsers"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="@drawable/button_shape_2"
+            android:background="@drawable/radius_btn"
             android:ems="10"
             android:gravity="center"
             android:hint="Order Number"
             android:inputType="textPersonName"
-
-            android:textColor="@color/lightGray"
+            android:textColor="@color/white"
             android:textColorHint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -152,11 +151,12 @@
             app:layout_constraintVertical_bias="0.316" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/send_message_to_firebase"
             android:layout_width="165dp"
             android:layout_height="44dp"
             android:background="@drawable/shape_save"
             android:text="Send"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.487"

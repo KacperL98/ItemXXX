@@ -1,66 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_height="wrap_content"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_height="wrap_content"
+        android:id="@+id/result"
         android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/resultTypeIcon"
         android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/resultTypeIcon"
         app:layout_constraintTop_toTopOf="@+id/resultTypeIcon"
-        android:textColor="@android:color/black"
-        android:lines="1" tools:text="ssssssssssssssssssssssssssssssssssssssssss"
-        android:id="@+id/result"/>
+        tools:text="ssssssssssssssssssssssssssssssssssssssssss" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:layout_marginStart="16dp"
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/resultTypeIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:backgroundTint="@color/white"
+        android:padding="15dp"
         android:src="@drawable/ic_text_documents"
-        android:backgroundTint="@color/colorTranslucent"
-        android:padding="15dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_height="wrap_content"
-        android:layout_width="0dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/resultTypeIcon"
-        android:ellipsize="end"
-        android:textColor="@android:color/darker_gray"
-        android:lines="1"
-        tools:text="15-07-2010 03-45AM"
         android:id="@+id/tvTime"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="@+id/resultTypeIcon"
-        app:layout_constraintTop_toBottomOf="@+id/result"/>
+        app:layout_constraintStart_toEndOf="@+id/resultTypeIcon"
+        app:layout_constraintTop_toBottomOf="@+id/result"
+        tools:text="15-07-2010 03-45AM" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintEnd_toEndOf="@+id/result"
-        app:layout_constraintTop_toTopOf="@+id/tvTime"
         android:id="@+id/favouriteIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/ic_star_full_yellow_24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvTime"/>
+        app:layout_constraintBottom_toBottomOf="@+id/tvTime"
+        app:layout_constraintEnd_toEndOf="@+id/result"
+        app:layout_constraintTop_toTopOf="@+id/tvTime" />
 
-    <View android:layout_height="1dp"
+    <View
         android:layout_width="match_parent"
+        android:layout_height="1dp"
         android:layout_marginTop="16dp"
         android:background="@color/lightGray"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resultTypeIcon"/>
+        app:layout_constraintTop_toBottomOf="@+id/resultTypeIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

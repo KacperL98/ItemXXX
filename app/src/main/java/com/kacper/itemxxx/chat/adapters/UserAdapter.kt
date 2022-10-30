@@ -24,7 +24,7 @@ import com.kacper.itemxxx.chat.model.Users
 import kotlinx.android.synthetic.main.user_search_item_layout.view.*
 
 class UserAdapter(
-    var context: Context,
+    var context: Context?,
     private val adapterUserViewHolder: List<Users>,
     private var isChatCheck: Boolean = false,
     private var imageUrl: String = ""
@@ -55,12 +55,12 @@ class UserAdapter(
                 if (position == 0) {
                     val intent = Intent(context, MessageChatActivity::class.java)
                     intent.putExtra("visit_id", users.uid)
-                    context.startActivity(intent)
+                    context?.startActivity(intent)
                 }
                 if (position == 1) {
                     val intent = Intent(context, VisitUserProfileActivity::class.java)
                     intent.putExtra("visit_id", users.uid)
-                    context.startActivity(intent)
+                    context?.startActivity(intent)
                 }
             }
             builder.show()

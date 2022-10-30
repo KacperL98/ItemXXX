@@ -13,6 +13,4 @@ object AuthenticationHelper {
     fun getUserAuth() {
         auth = FirebaseAuth.getInstance()
     }
-
-
 }

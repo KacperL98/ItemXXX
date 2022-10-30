@@ -15,7 +15,7 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_main"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/btnColor"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
@@ -23,6 +23,7 @@
                 android:id="@+id/back_btn_panelActivity"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
+                android:layout_margin="12dp"
                 android:src="@drawable/ic_back_panel"
                 android:tint="@color/colorWhite"/>
 
@@ -49,12 +50,12 @@
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorChat"
+            android:background="@color/btnColor"
             app:tabIndicator="@android:color/white"/>
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
-            android:background="@android:color/white"
+            android:background="@drawable/gradient_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </com.google.android.material.appbar.AppBarLayout>

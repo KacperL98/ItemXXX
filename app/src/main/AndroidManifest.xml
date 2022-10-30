@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.kacper.itemxxx">
+    package="com.kacper.itemxxx" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme" >
         <activity
             android:name=".chat.chatsActivity.MessageChatActivity"
             android:screenOrientation="portrait" />
@@ -44,8 +44,11 @@
             android:name=".authorization.LoginActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".email.EmailActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".cameraPermission.Permission"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,7 +63,7 @@
             android:name=".chat.notifications.MyFirebaseMessaging"
             android:enabled="true"
             android:exported="true"
-            tools:ignore="Instantiatable">
+            tools:ignore="Instantiatable" >
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -69,7 +72,7 @@
             android:name=".chat.notifications.MyFirebaseInstanceId"
             android:enabled="true"
             android:exported="true"
-            tools:ignore="Instantiatable">
+            tools:ignore="Instantiatable" >
             <intent-filter>
                 <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>

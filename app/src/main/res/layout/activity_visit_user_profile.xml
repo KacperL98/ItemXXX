@@ -18,7 +18,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/radius_btn"
             android:padding="10dp">
 
             <androidx.appcompat.widget.AppCompatImageView

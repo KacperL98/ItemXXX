@@ -29,9 +29,6 @@
             android:name=".chat.chatsActivity.ChatActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".authorization.ResetPasswordActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".authorization.ChangePasswordActivity"
             android:screenOrientation="portrait" />
         <activity

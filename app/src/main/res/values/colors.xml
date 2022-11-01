@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#B8B5B5</color>
     <color name="colorText">#000000</color>
-    <color name="colorLightGray">#B7FFFFFF</color>
     <color name="colorWhite">#fff</color>
     <color name="White">#fff</color>
 
@@ -16,7 +15,6 @@
     <color name="darkBrown">#FFFFFF</color>
     <color name="backPanel">#000000</color>
     <color name="btnColor">#002AFF</color>
-    <color name="scanColor">#918D8D</color>
     <color name="resetColor">#ffffff</color>
 
     //chat

@@ -3,30 +3,34 @@ package com.kacper.itemxxx.chat.chatsActivity
 import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
 import com.kacper.itemxxx.R
 import com.kacper.itemxxx.chat.adapters.ChatsAdapter
-import com.kacper.itemxxx.chat.notifications.APIService
 import com.kacper.itemxxx.chat.model.Chat
 import com.kacper.itemxxx.chat.model.Data
 import com.kacper.itemxxx.chat.model.Users
-import com.kacper.itemxxx.chat.notifications.*
-import com.kacper.itemxxx.databinding.ActivityChatBinding
-import com.kacper.itemxxx.databinding.ActivityLoginBinding
+import com.kacper.itemxxx.chat.notifications.APIService
+import com.kacper.itemxxx.chat.notifications.Client
+import com.kacper.itemxxx.chat.notifications.Sender
+import com.kacper.itemxxx.chat.notifications.Token
 import com.kacper.itemxxx.databinding.ActivityMessageChatBinding
 import com.kacper.itemxxx.helpers.AuthenticationHelper.firebaseUser
 import com.kacper.itemxxx.helpers.AuthenticationHelper.refUsers
+import com.kacper.itemxxx.helpers.toastCustom
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_message_chat.*
 import retrofit2.Call
@@ -58,7 +62,7 @@ class MessageChatActivity : AppCompatActivity() {
             APIService::class.java
         )
         intent = intent
-        userIdVisit = intent.getStringExtra("visit_id")!!
+        userIdVisit = intent.getStringExtra("visit_id").toString()
         firebaseUser = FirebaseAuth.getInstance().currentUser
 
 
@@ -75,9 +79,9 @@ class MessageChatActivity : AppCompatActivity() {
 
             override fun onDataChange(pO: DataSnapshot) {
                 val user: Users? = pO.getValue(Users::class.java)
-                binding.usernameMchat.text = user!!.username
-                Picasso.get().load(user.profile).into(binding.profileImageMchat)
-                retrieveMessages(firebaseUser!!.uid, userIdVisit, user.profile)
+                binding.usernameMchat.text = user?.username
+                Picasso.get().load(user?.profile).into(binding.profileImageMchat)
+                retrieveMessages(firebaseUser!!.uid, userIdVisit, user?.profile)
             }
         })
         send_message_btn.setOnClickListener {
@@ -158,6 +162,7 @@ class MessageChatActivity : AppCompatActivity() {
                 })
             }
     }
+
     private fun sendNotification(
         receiverId: String,
         userName: String?,
@@ -180,30 +185,22 @@ class MessageChatActivity : AppCompatActivity() {
                     val sender = Sender(data, token!!.getToken().toString())
 
                     apiService!!.sendNotification(sender)
-                        .enqueue(object : Callback<Data> {
-                            override fun onResponse(
-                                call: Call<Data>,
-                                response: Response<Data>
-                            ) {
+                        ?.enqueue(object : Callback<Data?> {
+                            override fun onResponse(call: Call<Data?>, response: Response<Data?>) {
                                 if (response.code() == 200) {
                                     if (response.body()!!.success != 1) {
-                                        Toast.makeText(
-                                            this@MessageChatActivity,
-                                            "Send message",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-
+                                        toastCustom("Send message")
                                     }
                                 }
                             }
-                            override fun onFailure(call: Call<Data>, t: Throwable) {
+
+                            override fun onFailure(call: Call<Data?>, t: Throwable) {
                             }
                         })
                 }
             }
 
             override fun onCancelled(pO: DatabaseError) {
-
             }
         })
     }
@@ -299,7 +296,7 @@ class MessageChatActivity : AppCompatActivity() {
                         (chatList as ArrayList<Chat>).add(chat)
                     }
                     chatsAdapter = ChatsAdapter(receiverImageUrl ?: "")
-                    Log.d("TAG", "KURWA ${chatList?.map { it }}")
+                    Log.d("TAG", "XDD ${chatList?.map { it }}")
                     chatsAdapter?.submitList(chatList)
                     binding.recyclerViewChats.adapter = chatsAdapter
 

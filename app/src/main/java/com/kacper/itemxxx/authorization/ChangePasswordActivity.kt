@@ -21,9 +21,9 @@ class ChangePasswordActivity : AppCompatActivity() {
             changePassword()
         }
         val actionbar = supportActionBar
-        actionbar!!.title = "Back to main screen"
-        actionbar.setDisplayHomeAsUpEnabled(true)
-        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar?.title = "Back to main screen"
+        actionbar?.setDisplayHomeAsUpEnabled(true)
+        actionbar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onSupportNavigateUp(): Boolean {

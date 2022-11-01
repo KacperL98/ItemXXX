@@ -1,5 +1,6 @@
 package com.kacper.itemxxx.chat.notifications
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -13,7 +14,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 import com.kacper.itemxxx.chat.chatsActivity.MessageChatActivity
+import com.kacper.itemxxx.mainPanel.PanelActivity
 
+@SuppressLint("MissingFirebaseInstanceTokenRefresh")
 class MyFirebaseMessaging : FirebaseMessagingService() {
 
     override fun onMessageReceived(mRemoteMessage: RemoteMessage) {
@@ -46,7 +49,7 @@ class MyFirebaseMessaging : FirebaseMessagingService() {
 
         val notification = remoteMessage.notification
         val j = user!!.replace("[\\D]".toRegex(), "").toInt()
-        val intent = Intent(this, MessageChatActivity::class.java)
+        val intent = Intent(this, PanelActivity::class.java)
 
         val bundle = Bundle()
         bundle.putString("userid", user)
@@ -82,7 +85,7 @@ class MyFirebaseMessaging : FirebaseMessagingService() {
 
         val notification = mRemoteMessage.notification
         val j = user!!.replace("[\\D]".toRegex(), "").toInt()
-        val intent = Intent(this, MessageChatActivity::class.java)
+        val intent = Intent(this, PanelActivity::class.java)
 
         val bundle = Bundle()
         bundle.putString("userid", user)

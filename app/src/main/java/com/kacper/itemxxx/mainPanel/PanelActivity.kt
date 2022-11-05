@@ -32,12 +32,12 @@ class PanelActivity : AppCompatActivity() {
         }
     }
 
-    private fun openScreenWithEmail() {
-        binding.btnEmail.setOnClickListener {
-            val email = Intent(this@PanelActivity, EmailActivity::class.java)
-            startActivity(email)
-        }
-    }
+//    private fun openScreenWithEmail() {
+//        binding.btnEmail.setOnClickListener {
+//            val email = Intent(this@PanelActivity, EmailActivity::class.java)
+//            startActivity(email)
+//        }
+//    }
 
     private fun logOut() {
         binding.btnLogout.setOnClickListener {
